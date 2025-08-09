@@ -16,7 +16,7 @@ from camoufox.sync_api import BrowserContext # Import BrowserContext
 def my_playwright_activity(browser_instance: CamoufoxBrowser, ctx: BrowserContext, page: Page):
 
 
-    page.goto("https://www.instagram.com", wait_until="domcontentloaded")
+    page.goto("https://instagram.com", wait_until="domcontentloaded")
 
     ctx.wait_for_event("close", timeout=0)
 

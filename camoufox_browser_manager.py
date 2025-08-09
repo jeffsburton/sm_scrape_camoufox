@@ -7,6 +7,7 @@ from profile_store import load_or_create_fp, _paths
 from typing import Callable, Any
 
 from profile import Profile
+from util import print_filtered_traceback
 from vpn import connect_and_verify, disconnect_vpn
 
 
@@ -50,8 +51,8 @@ class CamoufoxBrowser:
         """
 
 
-
-        asyncio.run(connect_and_verify(self.profile))
+        if self.profile.code is not None:
+            asyncio.run(connect_and_verify(self.profile))
 
         fp = load_or_create_fp(self.profile.profile)
         #pprint.pprint(fp)
@@ -83,3 +84,4 @@ class CamoufoxBrowser:
 
         except Exception as e:
             print(f"An error occurred for profile {self.profile.profile}: {e}")
+            print_filtered_traceback()

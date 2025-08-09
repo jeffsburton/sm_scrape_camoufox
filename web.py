@@ -98,3 +98,7 @@ def get_accounts(status: AccountStatus) -> List[Profile]: # Changed return type 
     profile_objects = [Profile.from_dict(item) for item in accounts_data["data"]]
 
     return profile_objects
+
+def get_random_profile() -> str:
+    profile_data = json_web_call("random_non_private_profile.php", { "platform_id": 1})
+    return profile_data["profile"]
